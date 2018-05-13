@@ -1,11 +1,11 @@
 package com.github.jamies1211.prisontools.ActionsGeneral;
 
-import com.github.jamies1211.prisontools.Data.EVTrain.EVTrainTokenData;
+import com.github.jamies1211.prisontools.Data.customData.EVTrain.EVTrainTokenData;
 import com.github.jamies1211.prisontools.Data.EnumGym;
 import com.github.jamies1211.prisontools.Data.EnumSpecialEvent;
-import com.github.jamies1211.prisontools.Data.Event.EventTokenData;
-import com.github.jamies1211.prisontools.Data.Gym.GymTokenData;
-import com.github.jamies1211.prisontools.Data.Safari.SafariTokenData;
+import com.github.jamies1211.prisontools.Data.customData.Event.EventTokenData;
+import com.github.jamies1211.prisontools.Data.customData.Gym.GymTokenData;
+import com.github.jamies1211.prisontools.Data.customData.Safari.SafariTokenData;
 import org.spongepowered.api.data.key.Keys;
 import org.spongepowered.api.item.ItemTypes;
 import org.spongepowered.api.item.inventory.ItemStack;

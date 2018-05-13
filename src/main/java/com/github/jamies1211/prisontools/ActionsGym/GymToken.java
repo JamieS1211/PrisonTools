@@ -4,7 +4,7 @@ import com.github.jamies1211.prisontools.ActionsGeneral.CheckRestrictedItem;
 import com.github.jamies1211.prisontools.ActionsGeneral.SecondsToString;
 import com.github.jamies1211.prisontools.ActionsGeneral.Teleport;
 import com.github.jamies1211.prisontools.Data.EnumGym;
-import com.github.jamies1211.prisontools.Data.Gym.GymTokenData;
+import com.github.jamies1211.prisontools.Data.customData.Gym.GymTokenData;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.data.type.HandTypes;
 import org.spongepowered.api.entity.living.player.Player;
@@ -16,8 +16,8 @@ import java.util.Optional;
 
 import static com.github.jamies1211.prisontools.ActionsConfig.ConfigDataInteraction.*;
 import static com.github.jamies1211.prisontools.ActionsConfig.PlayerConfigDataInteraction.*;
-import static com.github.jamies1211.prisontools.Data.Gym.GymTokenData.GYM_RANK;
 import static com.github.jamies1211.prisontools.Data.Messages.*;
+import static com.github.jamies1211.prisontools.Data.customData.MyKeys.GYM_RANK;
 
 /**
  * Created by Jamie on 18-Jun-16.

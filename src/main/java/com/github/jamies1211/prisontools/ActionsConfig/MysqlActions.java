@@ -1,12 +1,9 @@
 package com.github.jamies1211.prisontools.ActionsConfig;
 
-import com.github.jamies1211.prisontools.PrisonTools;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.spongepowered.api.Sponge;
-import org.spongepowered.api.scheduler.Scheduler;
-import org.spongepowered.api.scheduler.Task;
 import org.spongepowered.api.service.sql.SqlService;
 import org.spongepowered.api.text.channel.MessageChannel;
 import org.spongepowered.api.text.serializer.TextSerializers;
@@ -14,11 +11,7 @@ import org.spongepowered.api.text.serializer.TextSerializers;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
-
-import static com.github.jamies1211.prisontools.PrisonTools.plugin;
 
 /**
  * Created by Jamie on 04/01/2017.

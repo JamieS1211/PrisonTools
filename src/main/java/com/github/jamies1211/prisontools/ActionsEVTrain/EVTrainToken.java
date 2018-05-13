@@ -1,7 +1,7 @@
 package com.github.jamies1211.prisontools.ActionsEVTrain;
 
 import com.github.jamies1211.prisontools.ActionsGeneral.CheckRestrictedItem;
-import com.github.jamies1211.prisontools.Data.EVTrain.EVTrainTokenData;
+import com.github.jamies1211.prisontools.Data.customData.EVTrain.EVTrainTokenData;
 import org.spongepowered.api.data.type.HandTypes;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.item.inventory.ItemStack;
@@ -9,9 +9,9 @@ import org.spongepowered.api.text.serializer.TextSerializers;
 
 import java.util.Optional;
 
-import static com.github.jamies1211.prisontools.Data.EVTrain.EVTrainTokenData.EVTRAIN_TIME;
-import static com.github.jamies1211.prisontools.Data.EVTrain.EVTrainTokenData.EVTRAIN_ZONE;
 import static com.github.jamies1211.prisontools.Data.Messages.*;
+import static com.github.jamies1211.prisontools.Data.customData.MyKeys.EVTRAIN_TIME;
+import static com.github.jamies1211.prisontools.Data.customData.MyKeys.EVTRAIN_ZONE;
 
 /**
  * Created by Jamie on 18-Jun-16.

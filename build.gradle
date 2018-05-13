@@ -32,10 +32,10 @@ spongestart{
     eula true
 
     //optional configs
-    spongeForgeBuild '2794'
+    spongeForgeBuild '3002'
     forgeServerFolder 'run'
 }
 
 dependencies {
-    compile 'org.spongepowered:spongeapi:7.0.0-SNAPSHOT'
+    compile 'org.spongepowered:spongeapi:7.1.0-SNAPSHOT'
 }

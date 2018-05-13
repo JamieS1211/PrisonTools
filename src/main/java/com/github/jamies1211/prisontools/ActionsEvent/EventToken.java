@@ -4,7 +4,7 @@ import com.github.jamies1211.prisontools.ActionsConfig.GeneralDataConfig;
 import com.github.jamies1211.prisontools.ActionsGeneral.CheckRestrictedItem;
 import com.github.jamies1211.prisontools.ActionsGeneral.Teleport;
 import com.github.jamies1211.prisontools.Data.EnumSpecialEvent;
-import com.github.jamies1211.prisontools.Data.Event.EventTokenData;
+import com.github.jamies1211.prisontools.Data.customData.Event.EventTokenData;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.data.type.HandTypes;
 import org.spongepowered.api.entity.living.player.Player;
@@ -16,8 +16,8 @@ import java.util.Optional;
 
 import static com.github.jamies1211.prisontools.ActionsConfig.ConfigDataInteraction.*;
 import static com.github.jamies1211.prisontools.ActionsConfig.PlayerConfigDataInteraction.setPlayerSubNode;
-import static com.github.jamies1211.prisontools.Data.Event.EventTokenData.EVENT_TYPE;
 import static com.github.jamies1211.prisontools.Data.Messages.*;
+import static com.github.jamies1211.prisontools.Data.customData.MyKeys.EVENT_TYPE;
 
 /**
  * Created by Jamie on 18-Jun-16.

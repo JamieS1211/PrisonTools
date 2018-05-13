@@ -17,25 +17,25 @@ import com.github.jamies1211.prisontools.ActionsGym.GymCooldown;
 import com.github.jamies1211.prisontools.ActionsSafari.ChangeSafariTime;
 import com.github.jamies1211.prisontools.ActionsSafari.CheckInSafari;
 import com.github.jamies1211.prisontools.ActionsSafari.SafariButtonPress;
-import com.github.jamies1211.prisontools.ActionsSafari.SafariToken;
 import com.github.jamies1211.prisontools.CommandsEVTrain.EVTrainHelpCommand;
 import com.github.jamies1211.prisontools.CommandsEvent.EventHelpCommand;
 import com.github.jamies1211.prisontools.CommandsGeneral.*;
 import com.github.jamies1211.prisontools.CommandsGym.GymHelpCommand;
 import com.github.jamies1211.prisontools.CommandsSafari.SafariHelpCommand;
-import com.github.jamies1211.prisontools.Data.EVTrain.EVTrainTokenData;
-import com.github.jamies1211.prisontools.Data.EVTrain.EVTrainTokenDataBuilder;
-import com.github.jamies1211.prisontools.Data.EVTrain.ImmutableEVTrainTokenData;
+import com.github.jamies1211.prisontools.Data.customData.EVTrain.EVTrainTokenData;
+import com.github.jamies1211.prisontools.Data.customData.EVTrain.EVTrainTokenDataBuilder;
+import com.github.jamies1211.prisontools.Data.customData.EVTrain.ImmutableEVTrainTokenData;
 import com.github.jamies1211.prisontools.Data.EnumRestrictedUseItems;
-import com.github.jamies1211.prisontools.Data.Event.EventTokenData;
-import com.github.jamies1211.prisontools.Data.Event.EventTokenDataBuilder;
-import com.github.jamies1211.prisontools.Data.Event.ImmutableEventTokenData;
-import com.github.jamies1211.prisontools.Data.Gym.GymTokenData;
-import com.github.jamies1211.prisontools.Data.Gym.GymTokenDataBuilder;
-import com.github.jamies1211.prisontools.Data.Gym.ImmutableGymTokenData;
-import com.github.jamies1211.prisontools.Data.Safari.ImmutableSafariTokenData;
-import com.github.jamies1211.prisontools.Data.Safari.SafariTokenData;
-import com.github.jamies1211.prisontools.Data.Safari.SafariTokenDataBuilder;
+import com.github.jamies1211.prisontools.Data.customData.Event.EventTokenData;
+import com.github.jamies1211.prisontools.Data.customData.Event.EventTokenDataBuilder;
+import com.github.jamies1211.prisontools.Data.customData.Event.ImmutableEventTokenData;
+import com.github.jamies1211.prisontools.Data.customData.Gym.GymTokenData;
+import com.github.jamies1211.prisontools.Data.customData.Gym.GymTokenDataBuilder;
+import com.github.jamies1211.prisontools.Data.customData.Gym.ImmutableGymTokenData;
+import com.github.jamies1211.prisontools.Data.customData.MyKeys;
+import com.github.jamies1211.prisontools.Data.customData.Safari.ImmutableSafariTokenData;
+import com.github.jamies1211.prisontools.Data.customData.Safari.SafariTokenData;
+import com.github.jamies1211.prisontools.Data.customData.Safari.SafariTokenDataBuilder;
 import com.github.jamies1211.prisontools.LinkCommands.*;
 import com.google.inject.Inject;
 import org.spongepowered.api.Sponge;
@@ -53,20 +53,17 @@ import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.block.ChangeBlockEvent;
 import org.spongepowered.api.event.block.InteractBlockEvent;
-import org.spongepowered.api.event.cause.Cause;
 import org.spongepowered.api.event.entity.DamageEntityEvent;
 import org.spongepowered.api.event.entity.InteractEntityEvent;
 import org.spongepowered.api.event.filter.cause.Root;
-import org.spongepowered.api.event.game.state.GameInitializationEvent;
-import org.spongepowered.api.event.game.state.GameLoadCompleteEvent;
-import org.spongepowered.api.event.game.state.GamePreInitializationEvent;
-import org.spongepowered.api.event.game.state.GameStoppingServerEvent;
+import org.spongepowered.api.event.game.state.*;
 import org.spongepowered.api.event.item.inventory.InteractInventoryEvent;
 import org.spongepowered.api.event.item.inventory.InteractItemEvent;
 import org.spongepowered.api.event.network.ClientConnectionEvent;
 import org.spongepowered.api.event.service.ChangeServiceProviderEvent;
 import org.spongepowered.api.item.inventory.ItemStack;
 import org.spongepowered.api.plugin.Plugin;
+import org.spongepowered.api.plugin.PluginContainer;
 import org.spongepowered.api.service.economy.EconomyService;
 import org.spongepowered.api.service.permission.PermissionService;
 import org.spongepowered.api.text.Text;
@@ -92,6 +89,9 @@ public class PrisonTools {
 	@Inject
 	private Logger logger;
 	public static PrisonTools plugin;
+
+	@Inject
+	PluginContainer container;
 
 	public Logger getLogger() {
 		return this.logger;
@@ -156,54 +156,52 @@ public class PrisonTools {
 
 	@SuppressWarnings("UnusedParameters")
 	@Listener
+	public void onInitial(GameConstructionEvent event) {
+		getLogger().info("PrisonTools custom data being registered");
+
+		// Register your Data, ImmutableData and DataBuilder in GameInitializationEvent
+		MyKeys.dummy();
+		DataRegistration.builder()
+				.dataName("Event Token")
+				.manipulatorId("eventtoken") // prefix is added for you and you can't add it yourself. This is the key without the plugin ID
+				.dataClass(EventTokenData.class)
+				.immutableClass(ImmutableEventTokenData.class)
+				.builder(new EventTokenDataBuilder())
+				.buildAndRegister(container);
+
+
+		DataRegistration.builder()
+				.dataName("EVTrain Token")
+				.manipulatorId("evtraintoken") // prefix is added for you and you can't add it yourself. This is the key without the plugin ID
+				.dataClass(EVTrainTokenData.class)
+				.immutableClass(ImmutableEVTrainTokenData.class)
+				.builder(new EVTrainTokenDataBuilder())
+				.buildAndRegister(container);
+
+
+		DataRegistration.builder()
+				.dataName("Gym Token")
+				.manipulatorId("gymtoken") // prefix is added for you and you can't add it yourself. This is the key without the plugin ID
+				.dataClass(GymTokenData.class)
+				.immutableClass(ImmutableGymTokenData.class)
+				.builder(new GymTokenDataBuilder())
+				.buildAndRegister(container);
+
+
+		DataRegistration.builder()
+				.dataName("Safari Token")
+				.manipulatorId("safaritoken") // prefix is added for you and you can't add it yourself. This is the key without the plugin ID
+				.dataClass(SafariTokenData.class)
+				.immutableClass(ImmutableSafariTokenData.class)
+				.builder(new SafariTokenDataBuilder())
+				.buildAndRegister(container);
+	}
+
+	@SuppressWarnings("UnusedParameters")
+	@Listener
 	public void onServerStart(GameInitializationEvent event) {
 		getLogger().info(startup);
 		MysqlActions.startConnection();
-
-		// Register your Data, ImmutableData and DataBuilder in GameInitializationEvent
-		//TODO solve
-
-		//API 5
-		Sponge.getDataManager().register(SafariTokenData.class, ImmutableSafariTokenData.class, new SafariTokenDataBuilder());
-		Sponge.getDataManager().register(EVTrainTokenData.class, ImmutableEVTrainTokenData.class, new EVTrainTokenDataBuilder());
-		Sponge.getDataManager().register(GymTokenData.class, ImmutableGymTokenData.class, new GymTokenDataBuilder());
-		Sponge.getDataManager().register(EventTokenData.class, ImmutableEventTokenData.class, new EventTokenDataBuilder());
-
-
-		// API 6+ conversion
-		// https://forums.spongepowered.org/t/psa-custom-data-serialization-changes/18496
-		// https://github.com/SpongePowered/SpongeAPI/pull/1531
-		DataRegistration.<SafariTokenData, ImmutableSafariTokenData>builder()
-				.setDataClass(SafariTokenData.class)
-				.setImmutableDataClass(ImmutableSafariTokenData.class)
-				.setBuilder(new SafariTokenDataBuilder())
-				.setManipulatorId("safari")
-				.buildAndRegister(this);
-
-
-		DataRegistration.<EVTrainTokenData, ImmutableEVTrainTokenData>builder()
-				.setDataClass(EVTrainTokenData.class)
-				.setImmutableDataClass(ImmutableEventTokenData.class)
-				.setBuilder(new EVTrainTokenDataBuilder())
-				.setManipulatorId("evtrain")
-				.buildAndRegister(this);
-
-
-		DataRegistration.<GymTokenData, ImmutableGymTokenData>builder()
-				.setDataClass(GymTokenData.class)
-				.setImmutableDataClass(ImmutableGymTokenData.class)
-				.setBuilder(new GymTokenDataBuilder())
-				.setManipulatorId("gym")
-				.buildAndRegister(this);
-
-
-		DataRegistration.<EventTokenData, ImmutableEventTokenData>builder()
-				.setDataClass(EventTokenData.class)
-				.setImmutableDataClass(ImmutableEventTokenData.class)
-				.setBuilder(new EventTokenDataBuilder())
-				.setManipulatorId("event")
-				.buildAndRegister(this);
-
 
 		/** Prison tools (general) command */
 		final CommandSpec prisonToolsCommand = CommandSpec.builder()

@@ -2,7 +2,6 @@ package com.github.jamies1211.prisontools.ActionsGeneral;
 
 import com.github.jamies1211.prisontools.PrisonTools;
 import org.spongepowered.api.service.permission.PermissionService;
-import org.spongepowered.api.service.permission.Subject;
 import org.spongepowered.api.service.permission.SubjectReference;
 
 import java.util.ArrayList;

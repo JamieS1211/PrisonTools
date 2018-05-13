@@ -4,10 +4,10 @@ import com.github.jamies1211.prisontools.ActionsEVTrain.EVTrainToken;
 import com.github.jamies1211.prisontools.ActionsEvent.EventToken;
 import com.github.jamies1211.prisontools.ActionsGym.GymToken;
 import com.github.jamies1211.prisontools.ActionsSafari.SafariToken;
-import com.github.jamies1211.prisontools.Data.EVTrain.EVTrainTokenData;
-import com.github.jamies1211.prisontools.Data.Event.EventTokenData;
-import com.github.jamies1211.prisontools.Data.Gym.GymTokenData;
-import com.github.jamies1211.prisontools.Data.Safari.SafariTokenData;
+import com.github.jamies1211.prisontools.Data.customData.EVTrain.EVTrainTokenData;
+import com.github.jamies1211.prisontools.Data.customData.Event.EventTokenData;
+import com.github.jamies1211.prisontools.Data.customData.Gym.GymTokenData;
+import com.github.jamies1211.prisontools.Data.customData.Safari.SafariTokenData;
 import com.github.jamies1211.prisontools.UptimeHandler;
 import org.spongepowered.api.data.type.HandTypes;
 import org.spongepowered.api.entity.living.player.Player;
@@ -16,11 +16,8 @@ import org.spongepowered.api.text.serializer.TextSerializers;
 
 import java.util.Optional;
 
-import static com.github.jamies1211.prisontools.Data.EVTrain.EVTrainTokenData.IS_EVTRAIN_TOKEN;
-import static com.github.jamies1211.prisontools.Data.Event.EventTokenData.IS_EVENT_TOKEN;
-import static com.github.jamies1211.prisontools.Data.Gym.GymTokenData.IS_GYM_TOKEN;
 import static com.github.jamies1211.prisontools.Data.Messages.*;
-import static com.github.jamies1211.prisontools.Data.Safari.SafariTokenData.IS_SAFARI_TOKEN;
+import static com.github.jamies1211.prisontools.Data.customData.MyKeys.*;
 
 /**
  * Created by Jamie on 18-Jun-16.
