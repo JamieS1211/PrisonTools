@@ -46,6 +46,7 @@ import org.spongepowered.api.command.args.GenericArguments;
 import org.spongepowered.api.command.spec.CommandSpec;
 import org.spongepowered.api.config.ConfigDir;
 import org.spongepowered.api.data.*;
+import org.spongepowered.api.data.key.Key;
 import org.spongepowered.api.data.type.HandType;
 import org.spongepowered.api.data.type.HandTypes;
 import org.spongepowered.api.entity.hanging.ItemFrame;
@@ -56,6 +57,7 @@ import org.spongepowered.api.event.block.InteractBlockEvent;
 import org.spongepowered.api.event.entity.DamageEntityEvent;
 import org.spongepowered.api.event.entity.InteractEntityEvent;
 import org.spongepowered.api.event.filter.cause.Root;
+import org.spongepowered.api.event.game.GameRegistryEvent;
 import org.spongepowered.api.event.game.state.*;
 import org.spongepowered.api.event.item.inventory.InteractInventoryEvent;
 import org.spongepowered.api.event.item.inventory.InteractItemEvent;
@@ -158,9 +160,26 @@ public class PrisonTools {
 	@Listener
 	public void onInitial(GameConstructionEvent event) {
 		getLogger().info("PrisonTools custom data being registered");
+	}
 
-		// Register your Data, ImmutableData and DataBuilder in GameInitializationEvent
+	@Listener
+	public void onKeyRegister(GameRegistryEvent.Register<Key<?>> event) {
 		MyKeys.dummy();
+		event.register(MyKeys.EVENT_TYPE);
+		event.register(MyKeys.IS_EVENT_TOKEN);
+		event.register(MyKeys.EVTRAIN_TIME);
+		event.register(MyKeys.EVTRAIN_ZONE);
+		event.register(MyKeys.IS_EVTRAIN_TOKEN);
+		event.register(MyKeys.IS_GYM_TOKEN);
+		event.register(MyKeys.GYM_RANK);
+		event.register(MyKeys.IS_SAFARI_TOKEN);
+		event.register(MyKeys.SAFARI_TIME);
+		event.register(MyKeys.SAFARI_ZONE);
+	}
+
+	@SuppressWarnings("UnusedParameters")
+	@Listener
+	public void onDataRegister(GameRegistryEvent.Register<DataRegistration<?, ?>> event) {
 		DataRegistration.builder()
 				.dataName("Event Token")
 				.manipulatorId("eventtoken") // prefix is added for you and you can't add it yourself. This is the key without the plugin ID
